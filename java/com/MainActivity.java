@@ -28,18 +28,26 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText editYards = (EditText) findViewById(R.id.editYards);
 
-
-
         Button buttonConvert = (Button) findViewById(R.id.buttonConvert);
 
        buttonConvert.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View arg0) {
 
-               double miles = Double.valueOf(editMiles.getText().toString());
-               double yards = miles/0.000493736501;
-               editYards.setText(String.valueOf(yards));
+               if (editMiles.getText().toString().isEmpty())
+               {
+                   double yards = Double.valueOf(editYards.getText().toString());
+                   double miles = yards * 0.000493736501;
+                   editMiles.setText(String.valueOf(miles));
+               }
 
+               else{
+
+                   double miles = Double.valueOf(editMiles.getText().toString());
+                   double yards = miles / 0.000493736501;
+                   editYards.setText(String.valueOf(yards));
+
+               }
            }
        });
     ;
